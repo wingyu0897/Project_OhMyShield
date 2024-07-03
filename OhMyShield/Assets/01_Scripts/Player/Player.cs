@@ -19,6 +19,6 @@ public class Player : MonoBehaviour
 
 	public void OnTouched(InputAction.CallbackContext context)
 	{
-		print(context.phase.ToString());
+		//print(context.phase.ToString());
 	}
 }
