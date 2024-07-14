@@ -19,6 +19,16 @@ public class Shield : MonoBehaviour
         GameObject shield = new GameObject("Shield Body");
         shield.transform.SetParent(transform);
 		shield.transform.localPosition = new Vector3(_shieldDistance, 0);
+
+		SpriteRenderer sprite = shield.AddComponent<SpriteRenderer>();
+		sprite.sprite = _myShield.ShieldImage;
+
+		shield.AddComponent<PolygonCollider2D>();
+	}
+
+	public void SetDirection(float angle)
+	{
+		transform.rotation = Quaternion.Euler(0, 0, angle);
 	}
 
     public void SetShieldData(ShieldDataSO inShieldData)
