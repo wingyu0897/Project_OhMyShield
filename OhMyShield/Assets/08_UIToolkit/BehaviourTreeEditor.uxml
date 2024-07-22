@@ -5,8 +5,16 @@
     </uie:Toolbar>
     <SplitView fixed-pane-initial-dimension="300">
         <ui:VisualElement name="left-panel" style="flex-grow: 1; background-color: rgb(55, 55, 55);">
-            <ui:Label tabindex="-1" text="Inspector" parse-escape-sequences="true" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37); color: rgb(200, 200, 200); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
-            <InspectorView />
+            <SplitView orientation="Vertical" fixed-pane-initial-dimension="291">
+                <ui:VisualElement name="inspector-container" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="Inspector" parse-escape-sequences="true" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37); color: rgb(200, 200, 200); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                    <InspectorView />
+                </ui:VisualElement>
+                <ui:VisualElement name="blackboard-container" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="Blackboard" parse-escape-sequences="true" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37); color: rgb(186, 186, 186);" />
+                    <ui:IMGUIContainer />
+                </ui:VisualElement>
+            </SplitView>
         </ui:VisualElement>
         <ui:VisualElement name="right-panel" style="flex-grow: 1;">
             <ui:Label tabindex="-1" text="Tree View" parse-escape-sequences="true" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37); color: rgb(200, 200, 200); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />

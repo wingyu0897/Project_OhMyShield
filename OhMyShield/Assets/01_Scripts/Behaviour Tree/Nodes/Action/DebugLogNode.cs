@@ -1,10 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DebugLogNode : ActionNode
 {
-	public string message;
+	[TextArea] public string message;
+
+	public DebugLogNode()
+	{
+		description = "메시지를 출력합니다.";
+	}
 
 	protected override void OnStart()
 	{
@@ -19,6 +22,7 @@ public class DebugLogNode : ActionNode
 	protected override State OnUpdate()
 	{
 		Debug.Log($"OnUpdate) {message}");
+
 		return State.Success;
 	}
 }

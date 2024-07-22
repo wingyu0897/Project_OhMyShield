@@ -16,6 +16,10 @@ MonoBehaviour:
   started: 0
   guid: 56bbc4f063dfc7841a3d577ca0173ab5
   position: {x: 532.00006, y: 125.35003}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
+  description: 
   child: {fileID: -3271317252044042649}
 --- !u!114 &-7808290305042552509
 MonoBehaviour:
@@ -32,7 +36,12 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: f65d20e5ed4e9044aac5207ae2d76d2b
-  position: {x: 929, y: 582}
+  position: {x: 756, y: 553.5999}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
+  description: 
+  child: {fileID: 0}
   duration: 1
 --- !u!114 &-3271317252044042649
 MonoBehaviour:
@@ -50,6 +59,10 @@ MonoBehaviour:
   started: 0
   guid: e2e94b20ad07eb044a11870c2c2d0c21
   position: {x: 518, y: 254}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
+  description: 
   child: {fileID: -385759910796710968}
 --- !u!114 &-385759910796710968
 MonoBehaviour:
@@ -67,6 +80,10 @@ MonoBehaviour:
   started: 0
   guid: e5cd106857276b54b924f6f58d61b1dc
   position: {x: 532, y: 401}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
+  description: 
   children:
   - {fileID: 7850276890226249543}
   - {fileID: 7570816073736877266}
@@ -94,6 +111,8 @@ MonoBehaviour:
   - {fileID: 7570816073736877266}
   - {fileID: 6603560658686759799}
   - {fileID: -7808290305042552509}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6603560658686759799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +128,12 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 76ef4a58b7165714e9e38d4b41e8b8d8
-  position: {x: 709, y: 591.76}
+  position: {x: 606.4, y: 552.7999}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
+  description: 
+  child: {fileID: 0}
   message: 222
 --- !u!114 &7570816073736877266
 MonoBehaviour:
@@ -126,7 +150,12 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: a39994c7ac56a254790a5c3eed185d22
-  position: {x: 584, y: 602}
+  position: {x: 456.80005, y: 552.7999}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
+  description: 
+  child: {fileID: 0}
   duration: 1
 --- !u!114 &7850276890226249543
 MonoBehaviour:
@@ -143,5 +172,10 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ed372410804d0b94c969e1860c463504
-  position: {x: 415, y: 582}
-  message: 111
+  position: {x: 267.2, y: 552.8}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
+  description: 
+  child: {fileID: 0}
+  message: 333

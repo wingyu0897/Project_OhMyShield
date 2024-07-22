@@ -1,0 +1,138 @@
+#node-border {
+    background-color: rgb(60, 60, 60);
+    border-left-color: rgb(40, 40, 40);
+    border-right-color: rgb(40, 40, 40);
+    border-top-color: rgb(40, 40, 40);
+    border-bottom-color: rgb(40, 40, 40);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#input {
+    align-items: center;
+}
+
+#output {
+    align-items: center;
+}
+
+#selection-border {
+    border-left-color: rgb(47, 167, 255);
+    border-right-color: rgb(47, 167, 255);
+    border-top-color: rgb(47, 167, 255);
+    border-bottom-color: rgb(47, 167, 255);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+:hover > #selection-border {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+:selected > #selection-border {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+:hover:selected > #selection-border {
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+.node {
+    min-width: 150px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+#title {
+    -unity-font-style: bold;
+}
+
+#description {
+    font-size: 12px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-bottom: 5px;
+    max-width: 150px;
+    white-space: normal;
+}
+
+#divider {
+    min-height: 1px;
+    background-color: rgb(101, 101, 101);
+}
+
+.action #input {
+    background-color: rgb(226, 71, 92);
+}
+
+.decorator #input {
+    background-color: rgb(163, 207, 162);
+}
+
+.composite #input {
+    background-color: rgb(80, 127, 222);
+}
+
+.root #input {
+    background-color: rgb(141, 141, 141);
+    min-height: 20px;
+}
+
+#title-label {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+}
+
+#node-state {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.running #node-state {
+    background-color: rgb(255, 173, 0);
+}
+
+.success #node-state {
+    background-color: rgb(21, 226, 0);
+}
+
+.failure #node-state {
+    background-color: rgb(249, 0, 51);
+}

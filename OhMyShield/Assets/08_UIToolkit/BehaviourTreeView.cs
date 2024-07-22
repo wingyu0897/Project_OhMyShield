@@ -22,6 +22,14 @@ public class BehaviourTreeView : GraphView
 		 
 		var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/08_UIToolkit/BehaviourTreeEditor.uss");
 		styleSheets.Add(styleSheet);
+
+		Undo.undoRedoPerformed += OnUndoRedo;
+	}
+
+	private void OnUndoRedo()
+	{
+		PopulateView(_tree);
+		AssetDatabase.SaveAssets();
 	}
 
 	private NodeView FindNodeView(Node node)
@@ -117,6 +125,15 @@ public class BehaviourTreeView : GraphView
 			});
 		}
 
+		if (graphViewChange.movedElements != null)
+		{
+			nodes.ForEach((n) =>
+			{
+				NodeView view = n as NodeView;
+				view.SortChildren();
+			});
+		}
+
 		return graphViewChange;
 	}
 
@@ -168,5 +185,14 @@ public class BehaviourTreeView : GraphView
 		nodeView.OnNodeSelected = OnNodeSelected;
 		nodeView.treeView = this;
 		AddElement(nodeView);
+	}
+
+	public void UpdateNodeState()
+	{
+		nodes.ForEach(n =>
+		{
+			NodeView view = n as NodeView;
+			view.UpdateState();
+		});
 	}
 }

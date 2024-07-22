@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class BehaviourTreeRunner : MonoBehaviour
 {
-    public BehaviourTree _tree;
+    public BehaviourTree tree;
 
 	private void Start()
 	{
-		_tree = _tree.Clone();
+		tree = tree.Clone();
+		tree.Bind(GetComponent<Agent>());
 	}
 
 	private void Update()
 	{
-		_tree.Update();
+		tree.Update();
 	}
 }

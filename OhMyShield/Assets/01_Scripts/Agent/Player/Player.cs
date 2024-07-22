@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour, IHealth
+public class Player : Agent, IHealth
 {
 	public float Health { get; set; }
 }
