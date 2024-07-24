@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Projectile : MonoBehaviour
+public class Projectile : AttackBase
 {
     // 방향 설정
     // 힘 설정
@@ -17,6 +17,11 @@ public class Projectile : MonoBehaviour
 	}
 
 	public virtual void SetValue(Vector2 direction, float power)
+	{
+
+	}
+
+	public override void Attack(Agent target)
 	{
 
 	}
