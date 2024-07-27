@@ -9,14 +9,15 @@ public class Enemy : Agent, IHealth
 	private float _health;
 	public float Health { get => _health; set => _health = value; }
 
-	public override Agent Target { get; }
+	public override Agent Target { get; set; }
 
-	private void Awake()
+	public void ModifyHealth(float change)
 	{
-		Init();
+		_health += change;
+		_health = Mathf.Clamp(_health, 0, _agentData.health);
 	}
 
-	private void Init()
+	public override void PoolInit()
 	{
 		_health = _agentData.health;
 	}

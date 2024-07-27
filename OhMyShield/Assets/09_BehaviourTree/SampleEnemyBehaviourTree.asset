@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8096991329992677208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891c96b3ab7997348b62fca8fc308875, type: 3}
+  m_Name: WaitRandomNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: fc5e1242290b4274c8559c5131d5c206
+  position: {x: 655.6, y: 596.80005}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  owner: {fileID: 0}
+  description: 
+  child: {fileID: 0}
+  minValue: 1
+  maxValue: 2
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d487b932139154080f937a3cc1c5b5, type: 3}
+  m_Name: SampleEnemyBehaviourTree
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 4444130441994088204}
+  treeState: 0
+  nodes:
+  - {fileID: 4444130441994088204}
+  - {fileID: 4247618238673015406}
+  - {fileID: 6788084196938654561}
+  - {fileID: 496515936950028507}
+  - {fileID: -8096991329992677208}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &496515936950028507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907600a7cb930c448979887fd5eb3d8f, type: 3}
+  m_Name: RandomAttackNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: af73a3358873bcf4a997798d0cebbf2e
+  position: {x: 484.8, y: 596.8}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  owner: {fileID: 0}
+  description: 
+  child: {fileID: 0}
+--- !u!114 &4247618238673015406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b982bef63edc249b0f06d27f1a032f, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 177dc09e288859243bc18e083c31d0a2
+  position: {x: 571.2, y: 334.096}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  owner: {fileID: 0}
+  description: 
+  child: {fileID: 6788084196938654561}
+--- !u!114 &4444130441994088204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c87789d7aaeaf4c8e2459699baee81, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 3328585b359d84b409fe3b242cb107f4
+  position: {x: 571.19995, y: 225.59998}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  owner: {fileID: 0}
+  description: 
+  child: {fileID: 4247618238673015406}
+--- !u!114 &6788084196938654561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb4888d45a5a004fa01254d5b2e5178, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 793349575de95104b9eb747869e5fc95
+  position: {x: 571.2, y: 458.60803}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  owner: {fileID: 0}
+  description: 
+  children:
+  - {fileID: 496515936950028507}
+  - {fileID: -8096991329992677208}

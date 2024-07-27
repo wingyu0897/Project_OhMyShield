@@ -19,6 +19,7 @@ public class Shield : MonoBehaviour
         GameObject shield = new GameObject("Shield Body");
         shield.transform.SetParent(transform);
 		shield.transform.localPosition = new Vector3(_shieldDistance, 0);
+		shield.layer = LayerMask.NameToLayer("Shield");
 
 		SpriteRenderer sprite = shield.AddComponent<SpriteRenderer>();
 		sprite.sprite = _myShield.ShieldImage;
@@ -34,5 +35,13 @@ public class Shield : MonoBehaviour
     public void SetShieldData(ShieldDataSO inShieldData)
 	{
         _myShield = inShieldData;
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.TryGetComponent(out AttackBase attack))
+		{
+			attack.StopAttack();
+		}
 	}
 }

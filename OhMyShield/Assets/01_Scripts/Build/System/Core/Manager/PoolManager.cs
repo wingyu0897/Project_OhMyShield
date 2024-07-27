@@ -1,26 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pooling;
 
-public class PoolManager : MonoSingleton<PoolManager>
+public class PoolManager
 {
-	[SerializeField] private PoolObjectDataSO _poolData;
-
 	private Dictionary<string, Pool> _pools;
 
-	protected override void Awake()
+	public virtual void CreatePool(PoolObjectDataSO poolList, Transform parent)
 	{
-		CreatePool();
-	}
+		if (poolList is null) return;
 
-	private void CreatePool()
-	{
-		if (_poolData is null) return;
+		_pools = new Dictionary<string, Pool>();
 
-		foreach (PoolData data in _poolData.poolingList)
+		foreach (PoolData data in poolList.poolingList)
 		{
-			Pool pool = new Pool(transform, data.prefab, data.preCreateCount);
+			Pool pool = new Pool(parent, data.prefab, data.preCreateCount);
 			_pools.Add(data.prefab.name, pool);
 		}
 	}

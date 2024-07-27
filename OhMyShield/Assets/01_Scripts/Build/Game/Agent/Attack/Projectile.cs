@@ -1,28 +1,58 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : AttackBase
 {
-    // 방향 설정
-    // 힘 설정
-    
+	private Vector2 _originPos;
+	private float _time;
 
-    private Rigidbody2D _myRigid;
+	private Coroutine _attackCoroutine;
 
-	private void Awake()
+	public void SetValue(float attackTime, Vector2 originPos)
 	{
-		_myRigid = GetComponent<Rigidbody2D>();
-	}
-
-	public virtual void SetValue(Vector2 direction, float power)
-	{
-
+		_attackTime = attackTime;
+		_originPos = originPos;
 	}
 
 	public override void Attack(Agent target)
 	{
+		if (_attackCoroutine != null)
+			StopCoroutine(_attackCoroutine);
 
+		_attackCoroutine = StartCoroutine(AttackCo(target));
+	}
+
+	private IEnumerator AttackCo(Agent target)
+	{
+		_time = 0;
+		float per = 0;
+		while (_time < _attackTime)
+		{
+			per = _time / _attackTime;
+			transform.position = Vector2.Lerp(_originPos, target.transform.position, per);
+
+			_time += Time.deltaTime;
+
+			yield return null;
+		}
+
+		StopAttack();
+
+		yield return null;
+	}
+
+	public override void StopAttack()
+	{
+		if (_attackCoroutine != null)
+		{
+			StopCoroutine(_attackCoroutine);
+		}
+
+		GameManager.Instance.poolManager.Push(this);
+	}
+
+	public override void PoolInit()
+	{
+		_attackTime = 1f;
 	}
 }

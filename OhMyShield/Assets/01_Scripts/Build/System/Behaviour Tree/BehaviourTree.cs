@@ -158,7 +158,7 @@ public class BehaviourTree : ScriptableObject
 	public void Bind(Agent agent)
 	{
 		Traverse(rootNode, node => {
-			node.agent = agent;
+			node.owner = agent;
 			node.blackboard = blackboard;
 		});
 	}

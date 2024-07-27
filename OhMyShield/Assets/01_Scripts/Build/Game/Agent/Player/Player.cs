@@ -8,17 +8,26 @@ public class Player : Agent, IHealth
 	public float Health { get => _health; set => _health = value; }
 
 	private Agent _target;
-	public override Agent Target => _target;
+	public override Agent Target { get => _target; set => _target = value; }
 
-	private void Awake()
+	public void ModifyHealth(float change)
 	{
-		Init();
+		_health += change;
+		_health = Mathf.Clamp(_health, 0, _agentData.health);
+
+		EditorLog.Log($"Player Health : {_health}");
 	}
 
-	private void Init()
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		
+		if (collision.TryGetComponent(out AttackBase attack))
+		{
+			ModifyHealth(-attack.Damage);
+		}
+	}
 
+	public override void PoolInit()
+	{
 		_health = _agentData.health;
 	}
 }

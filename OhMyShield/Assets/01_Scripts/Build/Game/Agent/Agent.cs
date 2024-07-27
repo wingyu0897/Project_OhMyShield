@@ -1,7 +1,9 @@
+using Pooling;
 using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class Agent : MonoBehaviour
+public abstract class Agent : PoolMono
 {
-    public abstract Agent Target { get; }
+    public abstract Agent Target { get; set; }
+
+    public List<AttackBase> attacks;
 }

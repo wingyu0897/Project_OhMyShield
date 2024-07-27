@@ -8,4 +8,14 @@ public class PlayerAttack : AttackBase
 	{
 
 	}
+
+	public override void StopAttack()
+	{
+
+	}
+
+	public override void PoolInit()
+	{
+
+	}
 }

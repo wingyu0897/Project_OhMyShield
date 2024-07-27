@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2058997775084387618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3732533787404062683}
+  - component: {fileID: 3395051866826602842}
+  m_Layer: 0
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3732533787404062683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058997775084387618}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2289978531345032357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3395051866826602842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058997775084387618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97ccbc18ecf4c04cb9e91b08e80a438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _attackTime: 2
+  _cooltime: 1
+  _projectilePrefab: {fileID: 8858427452750436751, guid: 5796bb8c27d51754fab3da367ba0ff23, type: 3}
 --- !u!1 &3550237517474215448
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,8 +142,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2289978531345032357}
   - component: {fileID: 4173463888647447631}
+  - component: {fileID: 6597472995495831609}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: SampleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,6 +164,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8336016119560014562}
+  - {fileID: 3732533787404062683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4173463888647447631
@@ -129,5 +179,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9d862826f0b63429564c7d64181f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacks: []
+  attacks:
+  - {fileID: 3395051866826602842}
   _agentData: {fileID: 11400000, guid: c419cd620f5390e47aefd3e7db9de3a4, type: 2}
+--- !u!114 &6597472995495831609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747394704195321400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43e3af592e454f488fe57625c176012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: {fileID: 11400000, guid: 1da7d32b7bc6cbc479ece0e5ca96252c, type: 2}
