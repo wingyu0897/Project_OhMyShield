@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class Player : Agent, IHealth
+public class Player : Agent
 {
 	[SerializeField] private AgentDataSO _agentData;
 
 	private float _health;
-	public float Health { get => _health; set => _health = value; }
-
+	public override float Health { get => _health; set => _health = value; }
 	private Agent _target;
 	public override Agent Target { get => _target; set => _target = value; }
 
-	public void ModifyHealth(float change)
+	public void Attack()
 	{
-		_health += change;
-		_health = Mathf.Clamp(_health, 0, _agentData.health);
+		if (attacks.Count == 0 || _target == null) return;
 
-		EditorLog.Log($"Player Health : {_health}");
+		attacks[0].Attack(_target);
+	}
+
+	public override void Dead()
+	{
+		EditorLog.Log("Player Dead");
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

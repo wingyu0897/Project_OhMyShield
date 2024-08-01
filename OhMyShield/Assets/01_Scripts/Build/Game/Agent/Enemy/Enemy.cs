@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Agent, IHealth
+public class Enemy : Agent
 {
 	[SerializeField] private AgentDataSO _agentData;
 
 	private float _health;
-	public float Health { get => _health; set => _health = value; }
+	public override float Health { get => _health; set => _health = value; }
 
 	public override Agent Target { get; set; }
 
-	public void ModifyHealth(float change)
+	public override void Dead()
 	{
-		_health += change;
-		_health = Mathf.Clamp(_health, 0, _agentData.health);
+		GameManager.Instance.poolManager.Push(this);
 	}
 
 	public override void PoolInit()
