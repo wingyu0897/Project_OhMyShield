@@ -18,15 +18,9 @@ public class PlayerInput : MonoBehaviour
 		_player = GetComponent<Player>();
 	}
 
-	private void OnEnable()
+	private void Start()
 	{
-		_inputReader.OnTouched += OnTouched;
-		_joystick.OnValueChanged.AddListener(JoystickValueToShield);
-	}
-
-	private void OnDisable()
-	{
-		_inputReader.OnTouched -= OnTouched;
+		//UIViewManager.Instance.
 	}
 
 	private void Update()
@@ -34,15 +28,14 @@ public class PlayerInput : MonoBehaviour
 		_isOverUI = EventSystem.current.IsPointerOverGameObject();
 	}
 
-	private void JoystickValueToShield(Vector2 value)
+	public void JoystickValueToShield(Vector2 value)
 	{
 		float angle = Mathf.Atan2(value.y, value.x) * Mathf.Rad2Deg;
 		_shield.SetDirection(angle);
 	}
 
-	public void OnTouched(InputAction.CallbackContext context)
+	public void DoAttack()
 	{
-		if (!_isOverUI && context.performed)
-			_player.Attack();
+		_player.Attack();
 	}
 }

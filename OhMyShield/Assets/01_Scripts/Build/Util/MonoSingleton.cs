@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
-	private static T _instance;
+	protected static T _instance;
 
     public static T Instance
 	{
@@ -37,6 +37,14 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 				Debug.LogWarning("Object Destroyed: Multiple Singleton Instance is running.");
 				Destroy(gameObject);
 			}
+		}
+	}
+
+	protected virtual void OnDestroy()
+	{
+		if (_instance is not null)
+		{
+			_instance = null;
 		}
 	}
 }

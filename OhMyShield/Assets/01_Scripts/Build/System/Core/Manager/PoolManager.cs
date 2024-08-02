@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pooling;
 
-public class PoolManager
+public class PoolManager : MonoSingleton<PoolManager>
 {
 	private Dictionary<string, Pool> _pools;
 

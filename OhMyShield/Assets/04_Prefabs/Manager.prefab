@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCanvas: {fileID: 4769369993529159828, guid: b5fd32561b0c94a4683a887f84b4352c, type: 3}
+  _poolList: {fileID: 11400000, guid: 2906bc97b2e979f4789b0c06c4c23310, type: 2}

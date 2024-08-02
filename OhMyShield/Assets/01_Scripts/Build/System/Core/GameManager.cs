@@ -1,5 +1,6 @@
 using UnityEngine;
 using Enums;
+using System.Collections.Generic;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -13,6 +14,38 @@ public class GameManager : MonoSingleton<GameManager>
 	[HideInInspector] public GameFlow gameFlow;
 	[HideInInspector] public PoolManager poolManager;
 
+	private List<ISystemComponent> _systemComponents;
+
+	private T AddSystemComponent<T>() where T : Component, ISystemComponent
+	{
+		T systemComp = gameObject.AddComponent<T>();
+		_systemComponents.Add(systemComp);
+		return systemComp;
+	}
+
+	private void InitializeGame()
+	{
+		_systemComponents = new List<ISystemComponent>();
+
+		gameFlow = new GameFlow();
+		gameFlow.OnSceneChanged += OnSceneChanged;
+
+		poolManager = gameObject.AddComponent<PoolManager>();
+		poolManager.CreatePool(_poolList, transform);
+
+		AddSystemComponent<UIViewController>();
+
+		EditorLog.Log("GameManager Initialized");
+	}
+
+	private void OnSceneChanged(GAME_STATE state)
+	{
+		foreach (ISystemComponent sys in _systemComponents)
+		{
+			sys.OnSceneChanged(state);
+		}
+	}
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -24,13 +57,13 @@ public class GameManager : MonoSingleton<GameManager>
 		gameFlow.ChangeScene(GAME_STATE.Game);
 	}
 
-	private void InitializeGame()
+	protected override void OnDestroy()
 	{
-		gameFlow = new GameFlow();
+		base.OnDestroy();
 
-		poolManager = new PoolManager();
-		poolManager.CreatePool(_poolList, transform);
-
-		EditorLog.Log("GameManager Initialized");
+		if (gameFlow is not null)
+		{
+			gameFlow.OnSceneChanged -= OnSceneChanged;
+		}
 	}
 }
