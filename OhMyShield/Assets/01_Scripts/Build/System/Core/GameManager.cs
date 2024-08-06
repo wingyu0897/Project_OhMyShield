@@ -26,6 +26,7 @@ public class GameManager : MonoSingleton<GameManager>
 	private void InitializeGame()
 	{
 		_systemComponents = new List<ISystemComponent>();
+		AddSystemComponent<UIViewController>();
 
 		gameFlow = new GameFlow();
 		gameFlow.OnSceneChanged += OnSceneChanged;
@@ -33,8 +34,7 @@ public class GameManager : MonoSingleton<GameManager>
 		poolManager = gameObject.AddComponent<PoolManager>();
 		poolManager.CreatePool(_poolList, transform);
 
-		AddSystemComponent<UIViewController>();
-
+		DontDestroyOnLoad(gameObject);
 		EditorLog.Log("GameManager Initialized");
 	}
 
@@ -49,8 +49,6 @@ public class GameManager : MonoSingleton<GameManager>
 	protected override void Awake()
 	{
 		base.Awake();
-
-		DontDestroyOnLoad(gameObject);
 
 		InitializeGame();
 

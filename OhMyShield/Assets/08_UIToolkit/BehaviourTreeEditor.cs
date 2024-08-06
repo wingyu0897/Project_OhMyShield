@@ -32,7 +32,6 @@ public class BehaviourTreeEditor : EditorWindow
 
     public void CreateGUI()
     {
-        Debug.Log("CreateGUIEvent");
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
 
@@ -70,7 +69,6 @@ public class BehaviourTreeEditor : EditorWindow
 
 	private void OnPlayModeStateChange(PlayModeStateChange obj)
 	{
-        Debug.Log("OnPlayModeStateChangeEvent");
 		switch (obj)
 		{
 			case PlayModeStateChange.EnteredEditMode:

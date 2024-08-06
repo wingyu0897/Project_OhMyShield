@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Enemy : Agent
@@ -10,9 +9,11 @@ public class Enemy : Agent
 	public override float Health { get => _health; set => _health = value; }
 
 	public override Agent Target { get; set; }
+	public override event Action OnDie;
 
 	public override void Dead()
 	{
+		OnDie.Invoke();
 		GameManager.Instance.poolManager.Push(this);
 	}
 

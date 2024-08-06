@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class PlayerPresenter : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _playerInput;
-	[SerializeField] private GameView _gameView;
+    private PlayerInput _playerInput;
+	private GameView _gameView;
 
 	private void Start()
 	{
+		_playerInput = GetComponent<PlayerInput>();
+		_gameView = UIViewManager.GetView<GameView>() as GameView;
 		_gameView?.SetUp(this);
 	}
 

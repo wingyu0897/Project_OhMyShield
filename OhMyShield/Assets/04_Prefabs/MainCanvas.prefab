@@ -394,7 +394,6 @@ GameObject:
   - component: {fileID: 7558786586783396726}
   - component: {fileID: 1857531392486220793}
   - component: {fileID: 2385229512758867604}
-  - component: {fileID: 9153261508776141122}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -501,19 +500,6 @@ MonoBehaviour:
   _rootView: {fileID: 954812797142664108}
   _views:
   - {fileID: 954812797142664108}
---- !u!114 &9153261508776141122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4769369993529159828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edaeb52d7eaa88144a6ab8f8725166a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!1 &5866058061813006386
 GameObject:
   m_ObjectHideFlags: 0
