@@ -6,17 +6,28 @@ public class PoolManager : MonoSingleton<PoolManager>
 {
 	private Dictionary<string, Pool> _pools;
 
-	public virtual void CreatePool(PoolObjectDataSO poolList, Transform parent)
+	public virtual void CreatePools(PoolObjectDataSO poolList, Transform parent)
 	{
 		if (poolList is null) return;
 
-		_pools = new Dictionary<string, Pool>();
+		if (_pools is null)
+			_pools = new Dictionary<string, Pool>();
 
 		foreach (PoolData data in poolList.poolingList)
 		{
-			Pool pool = new Pool(parent, data.prefab, data.preCreateCount);
-			_pools.Add(data.prefab.name, pool);
+			CreatePool(parent, data.prefab, data.preCreateCount);
 		}
+	}
+
+	public virtual void CreatePool(Transform parent, PoolMono prefab, int createCnt = 0)
+	{
+		if (prefab is null) return;
+
+		if (_pools is null)
+			_pools = new Dictionary<string, Pool>();
+
+		Pool pool = new Pool(parent, prefab, createCnt);
+		_pools.Add(prefab.name, pool);
 	}
 
 	public PoolMono Pop(string name)
@@ -26,6 +37,10 @@ public class PoolManager : MonoSingleton<PoolManager>
 		if (_pools.ContainsKey(name))
 		{
 			ret = _pools[name].Pop();
+		}
+		else
+		{
+			EditorLog.Log($"No Pool({name})");
 		}
 
 		return ret;

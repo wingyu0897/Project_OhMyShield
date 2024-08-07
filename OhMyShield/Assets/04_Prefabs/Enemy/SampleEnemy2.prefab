@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3732533787404062683}
+  - component: {fileID: 2638137630036067821}
   - component: {fileID: 3395051866826602842}
+  - component: {fileID: 5488691184811068528}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -32,6 +34,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2289978531345032357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2638137630036067821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058997775084387618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97ccbc18ecf4c04cb9e91b08e80a438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _attackTime: 1
+  _cooltime: 0.2
+  _height: 5
+  _projectilePrefab: {fileID: 8858427452750436751, guid: 5796bb8c27d51754fab3da367ba0ff23, type: 3}
 --- !u!114 &3395051866826602842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,9 +64,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _attackTime: 2
-  _cooltime: 1
-  _projectilePrefab: {fileID: 8858427452750436751, guid: 5796bb8c27d51754fab3da367ba0ff23, type: 3}
+  _attackTime: 1
+  _cooltime: 0.2
+  _height: 5
+  _projectilePrefab: {fileID: 5359489382516815189, guid: db123abfd5b39474bb26925ade407e5d, type: 3}
+--- !u!114 &5488691184811068528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058997775084387618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97ccbc18ecf4c04cb9e91b08e80a438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _attackTime: 1
+  _cooltime: 0.2
+  _height: -5
+  _projectilePrefab: {fileID: 5359489382516815189, guid: db123abfd5b39474bb26925ade407e5d, type: 3}
 --- !u!1 &3550237517474215448
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +156,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 532620675
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.053724565, g: 0.3886792, b: 0, a: 1}
@@ -179,8 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9d862826f0b63429564c7d64181f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacks:
-  - {fileID: 3395051866826602842}
+  attacks: []
   _agentData: {fileID: 11400000, guid: c419cd620f5390e47aefd3e7db9de3a4, type: 2}
 --- !u!114 &6597472995495831609
 MonoBehaviour:

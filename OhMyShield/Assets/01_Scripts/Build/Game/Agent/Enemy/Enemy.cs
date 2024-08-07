@@ -13,6 +13,7 @@ public class Enemy : Agent
 
 	public override void Dead()
 	{
+		attacks.ForEach(attack => attack.StopAttack());
 		OnDie.Invoke();
 		GameManager.Instance.poolManager.Push(this);
 	}

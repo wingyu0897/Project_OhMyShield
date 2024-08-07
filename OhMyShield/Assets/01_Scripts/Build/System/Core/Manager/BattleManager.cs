@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BattleManager : MonoSingleton<BattleManager>
@@ -50,7 +51,8 @@ public class BattleManager : MonoSingleton<BattleManager>
 	{
 		_currentEnemy.OnDie -= OnEnemyDieHandler;
 		_currentEnemy = null;
-		SelectEnemy();
+		_player.Target = null;
+		StartCoroutine(DelaySpawnEnemy());
 	}
 
 	private void SelectEnemy()
@@ -58,5 +60,11 @@ public class BattleManager : MonoSingleton<BattleManager>
 		Enemy enemy = _enemyList.enemies[Random.Range(0, _enemyList.enemies.Count)];
 		SpawnEnemy(enemy);
 		SetTarget();
+	}
+
+	IEnumerator DelaySpawnEnemy()
+	{
+		yield return new WaitForSeconds(1f);
+		SelectEnemy();
 	}
 }

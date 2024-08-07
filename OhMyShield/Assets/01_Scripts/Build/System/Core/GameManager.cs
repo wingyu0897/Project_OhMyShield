@@ -32,7 +32,7 @@ public class GameManager : MonoSingleton<GameManager>
 		gameFlow.OnSceneChanged += OnSceneChanged;
 
 		poolManager = gameObject.AddComponent<PoolManager>();
-		poolManager.CreatePool(_poolList, transform);
+		poolManager.CreatePools(_poolList, transform);
 
 		DontDestroyOnLoad(gameObject);
 		EditorLog.Log("GameManager Initialized");

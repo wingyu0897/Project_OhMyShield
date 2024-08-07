@@ -13,6 +13,14 @@ public abstract class Agent : PoolMono, IHealth
 
 	public abstract event Action OnDie;
 
+	private void Awake()
+	{
+		foreach (AttackBase attack in transform.Find("Attack")?.GetComponents<AttackBase>())
+		{
+			attacks.Add(attack);
+		}
+	}
+
 	public void ModifyHealth(float change)
 	{
 		Health += change;
