@@ -15,7 +15,11 @@ MonoBehaviour:
   poolingList:
   - prefab: {fileID: 4173463888647447631, guid: 1b2210ea60765b74a8fc801c6fa6ccf4, type: 3}
     preCreateCount: 1
-  - prefab: {fileID: 8858427452750436751, guid: 5796bb8c27d51754fab3da367ba0ff23, type: 3}
-    preCreateCount: 2
   - prefab: {fileID: 4173463888647447631, guid: e57a2a76e08d356468880d1e4e55f394, type: 3}
     preCreateCount: 1
+  - prefab: {fileID: 8858427452750436751, guid: 5796bb8c27d51754fab3da367ba0ff23, type: 3}
+    preCreateCount: 2
+  - prefab: {fileID: 5359489382516815189, guid: db123abfd5b39474bb26925ade407e5d, type: 3}
+    preCreateCount: 2
+  - prefab: {fileID: 5850057448535053057, guid: 86b8cd3ed01df824d8bb230f09c5cfad, type: 3}
+    preCreateCount: 2

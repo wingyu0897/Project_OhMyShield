@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3732533787404062683}
   - component: {fileID: 2638137630036067821}
-  - component: {fileID: 3395051866826602842}
-  - component: {fileID: 5488691184811068528}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -50,41 +48,8 @@ MonoBehaviour:
   _attackTime: 1
   _cooltime: 0.2
   _height: 5
-  _projectilePrefab: {fileID: 8858427452750436751, guid: 5796bb8c27d51754fab3da367ba0ff23, type: 3}
---- !u!114 &3395051866826602842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058997775084387618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f97ccbc18ecf4c04cb9e91b08e80a438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1
-  _attackTime: 1
-  _cooltime: 0.2
-  _height: 5
-  _projectilePrefab: {fileID: 5359489382516815189, guid: db123abfd5b39474bb26925ade407e5d, type: 3}
---- !u!114 &5488691184811068528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058997775084387618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f97ccbc18ecf4c04cb9e91b08e80a438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1
-  _attackTime: 1
-  _cooltime: 0.2
-  _height: -5
-  _projectilePrefab: {fileID: 5359489382516815189, guid: db123abfd5b39474bb26925ade407e5d, type: 3}
+  _angle: 190
+  _projectilePrefab: {fileID: 5850057448535053057, guid: 86b8cd3ed01df824d8bb230f09c5cfad, type: 3}
 --- !u!1 &3550237517474215448
 GameObject:
   m_ObjectHideFlags: 0

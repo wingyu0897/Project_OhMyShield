@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ProjectileController : AttackBase
 {
+	[Tooltip("Height of ParabolaProjectile")]
 	[SerializeField] private float _height;
+	[Tooltip("Angle for BezierProjectile")]
+	[SerializeField] private float _angle;
 
 	[Space]
 	[SerializeField] private Projectile _projectilePrefab;
@@ -22,7 +25,7 @@ public class ProjectileController : AttackBase
 
 		// 발사체 설정
 		projectile.transform.position = transform.position;
-		projectile.SetValue(_attackTime, transform.position, _height);
+		projectile.SetValue(_attackTime, transform.position, _height, _angle);
 
 		// 발사체 공격
 		projectile.Attack(target);

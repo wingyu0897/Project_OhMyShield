@@ -20,7 +20,7 @@ public class Projectile : AttackBase
 	/// <param name="attackTime">공격에 걸리는 시간</param>
 	/// <param name="originPos">초기 위치 정보</param>
 	/// <param name="height">위로 띄워질 높이(포물선 발사체에서 사용)</param>
-	public virtual void SetValue(float attackTime, Vector2 originPos, float height)
+	public virtual void SetValue(float attackTime, Vector2 originPos, float height = 0, float angle = 0)
 	{
 		_attackTime = attackTime;
 		_originPos = originPos;

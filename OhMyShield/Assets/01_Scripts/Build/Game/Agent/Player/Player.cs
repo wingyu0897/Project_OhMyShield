@@ -31,6 +31,7 @@ public class Player : Agent
 		if (collision.TryGetComponent(out AttackBase attack))
 		{
 			ModifyHealth(-attack.Damage);
+			attack.StopAttack();
 		}
 	}
 
