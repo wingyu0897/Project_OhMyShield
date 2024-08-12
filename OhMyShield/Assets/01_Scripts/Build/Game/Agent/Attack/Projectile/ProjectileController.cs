@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ProjectileController : AttackBase
 {
+
 	[Tooltip("Height of ParabolaProjectile")]
 	[SerializeField] private float _height;
 	[Tooltip("Angle for BezierProjectile")]
 	[SerializeField] private float _angle;
 
 	[Space]
+
 	[SerializeField] private Projectile _projectilePrefab;
 
 	private List<Projectile> _projectiles = new();
@@ -38,6 +40,7 @@ public class ProjectileController : AttackBase
 		Projectile projectile = attack as Projectile;
 		projectile.OnAttackEnd -= OnProjectileAttackEndHandler;
 		_projectiles.Remove(projectile);
+		OnAttackEnd?.Invoke(this);
 	}
 
 	public override void StopAttack()

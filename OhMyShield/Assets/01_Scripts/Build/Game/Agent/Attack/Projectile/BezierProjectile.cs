@@ -13,7 +13,6 @@ public class BezierProjectile : Projectile
 	{
 		base.SetValue(attackTime, originPos, height, angle);
 		_angle = angle > 180 ? -360f + angle : angle;
-		print(_angle);
 	}
 
 	public override void Attack(Agent target)
@@ -30,19 +29,19 @@ public class BezierProjectile : Projectile
 
 	protected override void SetPosition(float per)
 	{
-		Debug.DrawLine(_originPos, _controlPointStart, Color.blue);
-		Debug.DrawLine(_controlPointStart, _controlPointTarget, Color.blue);
-		Debug.DrawLine(_controlPointTarget, _target.transform.position, Color.blue);
+		//Debug.DrawLine(_originPos, _controlPointStart, Color.blue);
+		//Debug.DrawLine(_controlPointStart, _controlPointTarget, Color.blue);
+		//Debug.DrawLine(_controlPointTarget, _target.transform.position, Color.blue);
 		Vector2 linearFrom = Vector2.Lerp(_originPos, _controlPointStart, per);
 		Vector2 linearMid = Vector2.Lerp(_controlPointStart, _controlPointTarget, per);
 		Vector2 linearTo = Vector2.Lerp(_controlPointTarget, _target.transform.position, per);
 
-		Debug.DrawLine(linearFrom, linearMid, Color.green);
-		Debug.DrawLine(linearMid, linearTo, Color.green);
+		//Debug.DrawLine(linearFrom, linearMid, Color.green);
+		//Debug.DrawLine(linearMid, linearTo, Color.green);
 		Vector2 linearFromMid = Vector2.Lerp(linearFrom, linearMid, per);
 		Vector2 linearMidTo = Vector2.Lerp(linearMid, linearTo, per);
 
-		Debug.DrawLine(linearFromMid, linearMidTo, Color.red);
+		//Debug.DrawLine(linearFromMid, linearMidTo, Color.red);
 		Vector2 point = Vector2.Lerp(linearFromMid, linearMidTo, per);
 
 		transform.position = point;

@@ -47,6 +47,8 @@ MonoBehaviour:
   _damage: 1
   _attackTime: 2
   _cooltime: 1
+  _height: 0
+  _angle: 0
   _projectilePrefab: {fileID: 8858427452750436751, guid: 5796bb8c27d51754fab3da367ba0ff23, type: 3}
 --- !u!1 &3550237517474215448
 GameObject:
@@ -121,9 +123,9 @@ SpriteRenderer:
   m_SortingLayerID: 532620675
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 796548267, guid: 47f1d97ed0b19814b97b8f4dfa72475b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
