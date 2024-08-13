@@ -11,11 +11,14 @@ public class BattleManager : MonoSingleton<BattleManager>
 	public Player Player => _player;
 
 	[Header("Enemy")]
+	[SerializeField] private EnemyListSO _enemyList;
+	[Space]
     [SerializeField] private Transform _enemyPosition;
 	[SerializeField] private Enemy _testEnemy;
-	[SerializeField] private EnemyListSO _enemyList;
-
 	private Enemy _currentEnemy;
+
+	[Header("Values")]
+	private int _enemyCount = 0;
 
 	private void Start()
 	{
@@ -50,15 +53,23 @@ public class BattleManager : MonoSingleton<BattleManager>
 	private void OnEnemyDieHandler()
 	{
 		_currentEnemy.OnDie -= OnEnemyDieHandler;
+
+		_enemyCount++;
 		_currentEnemy = null;
 		_player.Target = null;
+
 		StartCoroutine(DelaySpawnEnemy());
 	}
 
 	private void SelectEnemy()
 	{
-		Enemy enemy = _enemyList.enemies[Random.Range(0, _enemyList.enemies.Count)];
-		SpawnEnemy(enemy);
+		Enemy enemyPrefab;
+		if ((_enemyCount + 1) % 5 == 0)
+			enemyPrefab = _enemyList.bosses[Random.Range(0, _enemyList.bosses.Count)];
+		else
+			enemyPrefab = _enemyList.enemies[Random.Range(0, _enemyList.enemies.Count)];
+
+		SpawnEnemy(enemyPrefab);
 		SetTarget();
 	}
 

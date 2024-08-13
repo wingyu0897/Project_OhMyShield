@@ -5,4 +5,5 @@ using UnityEngine;
 public class EnemyListSO : ScriptableObject
 {
     public List<Enemy> enemies;
+    public List<Enemy> bosses;
 }

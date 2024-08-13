@@ -52,7 +52,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 		InitializeGame();
 
-		gameFlow.ChangeScene(GAME_STATE.Game);
+		gameFlow.ChangeScene(GAME_STATE.Menu);
 	}
 
 	protected override void OnDestroy()

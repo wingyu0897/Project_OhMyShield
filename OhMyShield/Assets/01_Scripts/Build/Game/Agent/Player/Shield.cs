@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shield : MonoBehaviour
@@ -23,6 +21,7 @@ public class Shield : MonoBehaviour
 
 		SpriteRenderer sprite = shield.AddComponent<SpriteRenderer>();
 		sprite.sprite = _myShield.ShieldImage;
+		sprite.sortingLayerName = "Agent";
 
 		shield.AddComponent<PolygonCollider2D>();
 	}

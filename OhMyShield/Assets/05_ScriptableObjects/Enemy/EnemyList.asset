@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 4173463888647447631, guid: 1b2210ea60765b74a8fc801c6fa6ccf4, type: 3}
+  bosses:
   - {fileID: 4173463888647447631, guid: e57a2a76e08d356468880d1e4e55f394, type: 3}
