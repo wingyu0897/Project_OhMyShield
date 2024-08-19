@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
+	public static bool InstanceIsNull => _instance is null;
+
 	protected static T _instance;
 
     public static T Instance

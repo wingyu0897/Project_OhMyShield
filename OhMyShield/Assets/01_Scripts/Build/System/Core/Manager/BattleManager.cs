@@ -32,9 +32,11 @@ public class BattleManager : MonoSingleton<BattleManager>
 		SetTarget();
 	}
 
+	#region Spawn
 	private void SpawnPlayer()
 	{
 		_player = Instantiate(_playerPrefab, _playerPosition.position, Quaternion.identity, null);
+		_player.OnDie += OnPlayerDieHandler;
 	}
 
 	private void SpawnEnemy(Enemy prefab)
@@ -48,17 +50,6 @@ public class BattleManager : MonoSingleton<BattleManager>
 	{
 		_player.Target = _currentEnemy;
 		_currentEnemy.Target = _player;
-	}
-
-	private void OnEnemyDieHandler()
-	{
-		_currentEnemy.OnDie -= OnEnemyDieHandler;
-
-		_enemyCount++;
-		_currentEnemy = null;
-		_player.Target = null;
-
-		StartCoroutine(DelaySpawnEnemy());
 	}
 
 	private void SelectEnemy()
@@ -77,5 +68,33 @@ public class BattleManager : MonoSingleton<BattleManager>
 	{
 		yield return new WaitForSeconds(1f);
 		SelectEnemy();
+	}
+
+	private void DespawnAll()
+	{
+		_player.OnDie -= OnPlayerDieHandler;
+		_currentEnemy.OnDie -= OnEnemyDieHandler;
+
+		_player.Despawn();
+		_currentEnemy.Despawn();
+	}
+	#endregion
+
+	private void OnEnemyDieHandler()
+	{
+		_currentEnemy.OnDie -= OnEnemyDieHandler;
+
+		_enemyCount++;
+		_currentEnemy = null;
+		_player.Target = null;
+
+		StartCoroutine(DelaySpawnEnemy());
+	}
+
+	private void OnPlayerDieHandler()
+	{
+		_player.OnDie -= OnPlayerDieHandler;
+		DespawnAll();
+		GameManager.Instance.gameFlow.ChangeScene(Enums.GAME_STATE.Menu);
 	}
 }

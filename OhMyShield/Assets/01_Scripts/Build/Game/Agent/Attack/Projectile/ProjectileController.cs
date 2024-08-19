@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ProjectileController : AttackBase
 {
-
+	[Header("Projectile")]
 	[Tooltip("Height of ParabolaProjectile")]
 	[SerializeField] private float _height;
 	[Tooltip("Angle for BezierProjectile")]
+	[SerializeField] private bool _randomAngle;
 	[SerializeField] private float _angle;
 
 	[Space]
@@ -27,7 +28,9 @@ public class ProjectileController : AttackBase
 
 		// 발사체 설정
 		projectile.transform.position = transform.position;
-		projectile.SetValue(_attackTime, transform.position, _height, _angle);
+
+		float angle = _randomAngle ? UnityEngine.Random.Range(0, 360f) : _angle;
+		projectile.SetValue(_attackTime, transform.position, _height, angle);
 
 		// 발사체 공격
 		projectile.Attack(target);
@@ -56,6 +59,4 @@ public class ProjectileController : AttackBase
 
 		_projectiles.Clear();
 	}
-
-	public override void PoolInit() { }
 }

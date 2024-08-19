@@ -48,7 +48,7 @@ public class PoolManager : MonoSingleton<PoolManager>
 
 	public void Push(PoolMono push)
 	{
-		if (_pools.ContainsKey(push.name))
+		if (_pools != null || _pools.ContainsKey(push.name))
 		{
 			_pools[push.name].Push(push);
 		}

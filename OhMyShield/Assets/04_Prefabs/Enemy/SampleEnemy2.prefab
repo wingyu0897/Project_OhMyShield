@@ -46,8 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _attackTime: 1
-  _cooltime: 0.2
+  _cooltime: 0.4
   _height: 5
+  _randomAngle: 1
   _angle: 190
   _projectilePrefab: {fileID: 5850057448535053057, guid: 86b8cd3ed01df824d8bb230f09c5cfad, type: 3}
 --- !u!1 &3550237517474215448

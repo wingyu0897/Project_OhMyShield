@@ -11,15 +11,26 @@ public class Enemy : Agent
 	public override Agent Target { get; set; }
 	public override event Action OnDie;
 
-	public override void Dead()
+	public override void Die()
 	{
 		attacks.ForEach(attack => attack.StopAttack());
-		OnDie.Invoke();
+		OnDie?.Invoke();
+		GameManager.Instance.poolManager.Push(this);
+	}
+
+	public override void Despawn()
+	{
+		attacks.ForEach(attack => attack.StopAttack());
 		GameManager.Instance.poolManager.Push(this);
 	}
 
 	public override void PoolInit()
 	{
 		_health = _agentData.health;
+	}
+
+	private void OnDestroy()
+	{
+		attacks.ForEach(attack => attack.StopAttack());
 	}
 }

@@ -9,10 +9,6 @@ public class DirectAttack : AttackBase
 		target.ModifyHealth(-_damage);
 	}
 
-	public override void PoolInit()
-	{
-	}
-
 	public override void StopAttack()
 	{
 		OnAttackEnd?.Invoke(this);

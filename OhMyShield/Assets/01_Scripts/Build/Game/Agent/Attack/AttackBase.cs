@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class AttackBase : PoolMono
 {
+    [Header("Attack")]
     [SerializeField] protected int _damage = 1;
     public int Damage => _damage;
     [SerializeField] protected float _attackTime;
@@ -12,9 +13,12 @@ public abstract class AttackBase : PoolMono
     public float Cooltime => _cooltime;
     protected float _lastAttackTime = float.MinValue;
     
-    public abstract event Action<AttackBase> OnAttackEnd;
+    public virtual event Action<AttackBase> OnAttackEnd;
 
+
+    public float RemainingCooltime() => Mathf.Clamp(_lastAttackTime + Cooltime - Time.time, 0, Cooltime);
     public virtual bool IsAbleToAttack() => Time.time > _lastAttackTime + _cooltime;
+
     public virtual bool DoAttack(Agent target)
 	{
         if (AttackManager.Instance.CanAttack(this) && IsAbleToAttack())
@@ -29,6 +33,7 @@ public abstract class AttackBase : PoolMono
 
     public abstract void Attack(Agent target);
     public abstract void StopAttack();
+    public virtual void Blocked() { }
 
-    public abstract override void PoolInit();
+    public override void PoolInit() { }
 }

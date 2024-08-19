@@ -20,10 +20,15 @@ public class Player : Agent
 		attacks[0].Attack(_target);
 	}
 
-	public override void Dead()
+	public override void Die()
 	{
 		OnDie?.Invoke();
 		EditorLog.Log("Player Dead");
+	}
+
+	public override void Despawn()
+	{
+		Destroy(gameObject);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -33,6 +38,11 @@ public class Player : Agent
 			ModifyHealth(-attack.Damage);
 			attack.StopAttack();
 		}
+	}
+
+	private void OnDestroy()
+	{
+		attacks.ForEach(attack => attack.StopAttack());
 	}
 
 	public override void PoolInit()

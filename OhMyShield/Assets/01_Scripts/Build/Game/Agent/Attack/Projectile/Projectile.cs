@@ -67,10 +67,15 @@ public class Projectile : AttackBase
 
 		OnAttackEnd?.Invoke(this);
 
-		if (_isPool) // 풀링된 오브젝트이면 반환
+		if (_isPool && !PoolManager.InstanceIsNull) // 풀링된 오브젝트이면 반환
 			PoolManager.Instance.Push(this);
 		else
 			Destroy(gameObject);
+	}
+
+	public override void Blocked()
+	{
+		StopAttack();
 	}
 
 	public override void PoolInit()

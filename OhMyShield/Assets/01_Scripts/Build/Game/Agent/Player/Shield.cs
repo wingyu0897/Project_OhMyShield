@@ -40,7 +40,7 @@ public class Shield : MonoBehaviour
 	{
 		if (collision.gameObject.TryGetComponent(out AttackBase attack))
 		{
-			attack.StopAttack();
+			attack.Blocked();
 		}
 	}
 }

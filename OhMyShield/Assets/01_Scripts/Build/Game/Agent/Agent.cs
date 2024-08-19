@@ -26,11 +26,12 @@ public abstract class Agent : PoolMono, IHealth
 		Health += change;
 		if (Health <= 0)
 		{
-			Dead();
+			Die();
 			_isDead = true;
 			Health = 0;
 		}
 	}
 
-	public abstract void Dead();
+	public abstract void Die();
+	public abstract void Despawn();
 }
