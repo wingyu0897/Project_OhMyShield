@@ -23,7 +23,7 @@ public class Util
 		}
 		else
 		{
-			foreach (T component in obj.GetComponentsInChildren<T>())
+			foreach (T component in obj.GetComponentsInChildren<T>(true))
 			{
 				if (string.IsNullOrEmpty(name) || component.name == name)
 				{

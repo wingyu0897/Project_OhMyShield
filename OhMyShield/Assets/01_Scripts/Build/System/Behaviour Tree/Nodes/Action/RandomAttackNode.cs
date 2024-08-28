@@ -14,7 +14,7 @@ public class RandomAttackNode : ActionNode
 
 	protected override State OnUpdate()
 	{
-		var attacks = owner.attacks.FindAll(attack => attack.IsAbleToAttack());
+		var attacks = owner.attacks.FindAll(attack => attack.IsNotCool());
 		if (attacks.Count == 0)
 			return State.Failure;
 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3732533787404062683}
-  - component: {fileID: 2638137630036067821}
+  - component: {fileID: 3395051866826602842}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2289978531345032357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2638137630036067821
+--- !u!114 &3395051866826602842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,11 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _attackTime: 1
-  _cooltime: 0.4
-  _height: 5
-  _randomAngle: 1
-  _angle: 190
-  _projectilePrefab: {fileID: 5850057448535053057, guid: 86b8cd3ed01df824d8bb230f09c5cfad, type: 3}
+  _cooltime: 1
+  _heightMin: -5
+  _heightMax: 5
+  _angle: 0
+  _randomAngle: 0
+  _projectilePrefab: {fileID: 5359489382516815189, guid: db123abfd5b39474bb26925ade407e5d, type: 3}
 --- !u!1 &3550237517474215448
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ SpriteRenderer:
   m_SortingLayerID: 532620675
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 878273041, guid: 47f1d97ed0b19814b97b8f4dfa72475b, type: 3}
+  m_Sprite: {fileID: 796548267, guid: 47f1d97ed0b19814b97b8f4dfa72475b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0

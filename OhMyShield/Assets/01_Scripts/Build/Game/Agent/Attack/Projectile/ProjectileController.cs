@@ -6,10 +6,11 @@ public class ProjectileController : AttackBase
 {
 	[Header("Projectile")]
 	[Tooltip("Height of ParabolaProjectile")]
-	[SerializeField] private float _height;
+	[SerializeField] private float _heightMin;
+	[SerializeField] private float _heightMax;
+	[SerializeField] private float _angle;
 	[Tooltip("Angle for BezierProjectile")]
 	[SerializeField] private bool _randomAngle;
-	[SerializeField] private float _angle;
 
 	[Space]
 
@@ -30,7 +31,7 @@ public class ProjectileController : AttackBase
 		projectile.transform.position = transform.position;
 
 		float angle = _randomAngle ? UnityEngine.Random.Range(0, 360f) : _angle;
-		projectile.SetValue(_attackTime, transform.position, _height, angle);
+		projectile.SetValue(transform.position, UnityEngine.Random.Range(_heightMin, _heightMax), angle);
 
 		// 발사체 공격
 		projectile.Attack(target);
@@ -58,5 +59,10 @@ public class ProjectileController : AttackBase
 		});
 
 		_projectiles.Clear();
+	}
+
+	public override bool CanAttack()
+	{
+		return base.CanAttack() && _projectilePrefab.ProjectileCanAttack();
 	}
 }

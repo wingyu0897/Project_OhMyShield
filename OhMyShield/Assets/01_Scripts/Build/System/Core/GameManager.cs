@@ -38,6 +38,11 @@ public class GameManager : MonoSingleton<GameManager>
 		EditorLog.Log("GameManager Initialized");
 	}
 
+	public void ChangeScene(GAME_STATE state)
+	{
+		gameFlow.ChangeScene(state);
+	}
+
 	private void OnSceneChanged(GAME_STATE state)
 	{
 		foreach (ISystemComponent sys in _systemComponents)

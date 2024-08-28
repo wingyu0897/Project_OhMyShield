@@ -1,3 +1,4 @@
+using Pooling;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class BattleManager : MonoSingleton<BattleManager>
 	public Player Player => _player;
 
 	[Header("Enemy")]
+	[SerializeField] private PoolObjectDataSO _enemyPoolingList;
 	[SerializeField] private EnemyListSO _enemyList;
 	[Space]
     [SerializeField] private Transform _enemyPosition;
@@ -18,18 +20,35 @@ public class BattleManager : MonoSingleton<BattleManager>
 	private Enemy _currentEnemy;
 
 	[Header("Values")]
-	private int _enemyCount = 0;
+	private int _score = 0;
+	public int Score => _score;
 
-	private void Start()
+	protected override void Awake()
 	{
-		Init();
+		base.Awake();
+
+		StartGame();
 	}
 
-	public void Init()
+	protected override void OnDestroy()
 	{
+		if (!PoolManager.InstanceIsNull)
+			PoolManager.Instance.RemovePools(_enemyPoolingList);
+	}
+
+	public void StartGame()
+	{
+		PoolManager.Instance.CreatePools(_enemyPoolingList, transform);
+
 		SpawnPlayer();
 		SpawnEnemy(_testEnemy);
 		SetTarget();
+	}
+
+	public void EndGame()
+	{
+		DespawnAll();
+		UIViewManager.ShowView<GameOverView>();
 	}
 
 	#region Spawn
@@ -55,7 +74,7 @@ public class BattleManager : MonoSingleton<BattleManager>
 	private void SelectEnemy()
 	{
 		Enemy enemyPrefab;
-		if ((_enemyCount + 1) % 5 == 0)
+		if ((_score + 1) % 5 == 0)
 			enemyPrefab = _enemyList.bosses[Random.Range(0, _enemyList.bosses.Count)];
 		else
 			enemyPrefab = _enemyList.enemies[Random.Range(0, _enemyList.enemies.Count)];
@@ -84,7 +103,7 @@ public class BattleManager : MonoSingleton<BattleManager>
 	{
 		_currentEnemy.OnDie -= OnEnemyDieHandler;
 
-		_enemyCount++;
+		_score++;
 		_currentEnemy = null;
 		_player.Target = null;
 
@@ -94,7 +113,6 @@ public class BattleManager : MonoSingleton<BattleManager>
 	private void OnPlayerDieHandler()
 	{
 		_player.OnDie -= OnPlayerDieHandler;
-		DespawnAll();
-		GameManager.Instance.gameFlow.ChangeScene(Enums.GAME_STATE.Menu);
+		EndGame();
 	}
 }

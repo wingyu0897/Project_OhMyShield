@@ -7,9 +7,9 @@ public class ParabolaProjectile : Projectile
 {
 	[SerializeField] protected float _height;
 
-	public override void SetValue(float attackTime, Vector2 originPos, float height, float angle)
+	public override void SetValue(Vector2 originPos, float height, float angle)
 	{
-		base.SetValue(attackTime, originPos, height);
+		base.SetValue(originPos, height);
 		_height = height;
 	}
 

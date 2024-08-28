@@ -7,15 +7,15 @@ public class AttackManager : MonoSingleton<AttackManager>
 
 	private const float MinAttackDelay = 0.01f;
 
-	public bool CanAttack(AttackBase attack)
+	public static bool CanAttack(float time)
 	{
-		_attacks.RemoveAll(num => num < Time.time);
+		_instance._attacks.RemoveAll(num => num < Time.time);
 
-		float attackTime = Time.time + attack.AttackTime;
+		float attackTime = Time.time + time;
 
-		if (_attacks.Count > 0)
+		if (_instance._attacks.Count > 0)
 		{
-			if (_attacks.Exists(num => Mathf.Abs(num - attackTime) <= MinAttackDelay))
+			if (_instance._attacks.Exists(num => Mathf.Abs(num - attackTime) <= MinAttackDelay))
 			{
 				return false;
 			}
@@ -25,11 +25,9 @@ public class AttackManager : MonoSingleton<AttackManager>
 		return true;
 	}
 
-	public void Attack(AttackBase attack, Agent target)
+	public void AddAttack(float attackTime)
 	{
-		float attackTime = Time.time + attack.AttackTime;
-
-		_attacks.Add(attackTime);
-		attack.Attack(target);
+		float time = Time.time + attackTime;
+		_attacks.Add(time);
 	}
 }

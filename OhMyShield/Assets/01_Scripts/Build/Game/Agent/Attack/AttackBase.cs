@@ -16,15 +16,18 @@ public abstract class AttackBase : PoolMono
     public virtual event Action<AttackBase> OnAttackEnd;
 
 
-    public float RemainingCooltime() => Mathf.Clamp(_lastAttackTime + Cooltime - Time.time, 0, Cooltime);
-    public virtual bool IsAbleToAttack() => Time.time > _lastAttackTime + _cooltime;
+    public float RemainingCooltime() => Mathf.Clamp(_lastAttackTime + _cooltime - Time.time, 0, _cooltime);
+    public virtual bool IsNotCool() => Time.time > _lastAttackTime + _cooltime;
+    public virtual bool CanAttack() => AttackManager.CanAttack(_attackTime) && IsNotCool();
 
     public virtual bool DoAttack(Agent target)
 	{
-        if (AttackManager.Instance.CanAttack(this) && IsAbleToAttack())
+        if (CanAttack())
 		{
-            AttackManager.Instance.Attack(this, target);
+            AttackManager.Instance.AddAttack(_attackTime);
             _lastAttackTime = Time.time;
+
+            Attack(target);
             return true;
 		}
 
@@ -33,7 +36,7 @@ public abstract class AttackBase : PoolMono
 
     public abstract void Attack(Agent target);
     public abstract void StopAttack();
-    public virtual void Blocked() { }
+    public virtual void Blocked() => StopAttack();
 
     public override void PoolInit() { }
 }

@@ -7,7 +7,7 @@ public class PlayerPresenter : MonoBehaviour
 
 	private void Start()
 	{
-		_playerInput = GetComponent<PlayerInput>();
+		_playerInput = BattleManager.Instance.Player.GetComponent<PlayerInput>();
 		_gameView = UIViewManager.GetView<GameView>() as GameView;
 		_gameView?.SetUp(this);
 	}

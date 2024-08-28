@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class UIView : MonoBehaviour
 {
-	private Dictionary<Type, List<UnityEngine.Object>> _uiElements = new();
+	protected Dictionary<Type, List<UnityEngine.Object>> _uiElements = new();
 
     public abstract void Initialize();
 

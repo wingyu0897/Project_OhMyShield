@@ -22,8 +22,8 @@ MonoBehaviour:
   description: "\uC815\uD574\uC9C4 \uBC94\uC704 \uB0B4\uC5D0\uC11C \uBB34\uC791\uC704
     \uC2DC\uAC04\uB9CC\uD07C \uB300\uAE30\uD558\uB294 \uB178\uB4DC"
   child: {fileID: 0}
-  minValue: 0.5
-  maxValue: 1
+  minValue: 0
+  maxValue: 0.1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

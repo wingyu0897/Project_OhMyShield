@@ -6,7 +6,7 @@ public class UIViewManager : MonoSingleton<UIViewManager>
     [SerializeField] private UIView _rootView;
 	private UIView _currentView;
 
-	[SerializeField] private List<UIView> _views;
+	private List<UIView> _views = new List<UIView>();
 	private Stack<UIView> _history = new Stack<UIView>();
 
 	public static UIView GetView<T>() where T : UIView
@@ -27,6 +27,7 @@ public class UIViewManager : MonoSingleton<UIViewManager>
 			_instance._currentView?.Hide();
 			view.Show();
 			_instance._history.Push(view);
+			_instance._currentView = view;
 		}
 	}
 
@@ -39,6 +40,7 @@ public class UIViewManager : MonoSingleton<UIViewManager>
 			_instance._currentView?.Hide();
 			view.Show();
 			_instance._history.Push(view);
+			_instance._currentView = view;
 		}
 	}
 
@@ -58,6 +60,8 @@ public class UIViewManager : MonoSingleton<UIViewManager>
 	protected override void Awake()
 	{
 		base.Awake();
+
+		GetComponentsInChildren(true, _views);
 
 		for (int i = 0; i < _views.Count; ++i)
 		{

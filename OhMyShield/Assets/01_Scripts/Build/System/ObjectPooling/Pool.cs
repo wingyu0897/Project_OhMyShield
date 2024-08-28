@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +23,19 @@ namespace Pooling
                 _pool.Push(instance);
 			}
 		}
+
+        public void DestroyPool()
+		{
+            _parent = null;
+            _prefab = null;
+
+            while (_pool.Count > 0)
+			{
+                GameObject.Destroy(_pool.Pop());
+			}
+
+            _pool = null;
+        }
 
         public void Push(PoolMono obj)
 		{

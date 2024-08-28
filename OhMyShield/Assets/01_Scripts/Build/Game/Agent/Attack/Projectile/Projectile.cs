@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Projectile : AttackBase
 {
+	[SerializeField] protected bool _angleToDirection = false;
+
+	protected Vector2 _startPos;
+	protected Vector2 _endPos;
+
 	protected Agent _target;
 	protected Vector2 _originPos;
 	protected float _time;
@@ -20,9 +25,8 @@ public class Projectile : AttackBase
 	/// <param name="attackTime">공격에 걸리는 시간</param>
 	/// <param name="originPos">초기 위치 정보</param>
 	/// <param name="height">위로 띄워질 높이(포물선 발사체에서 사용)</param>
-	public virtual void SetValue(float attackTime, Vector2 originPos, float height = 0, float angle = 0)
+	public virtual void SetValue(Vector2 originPos, float height = 0, float angle = 0)
 	{
-		_attackTime = attackTime;
 		_originPos = originPos;
 	}
 
@@ -32,6 +36,9 @@ public class Projectile : AttackBase
 			StopCoroutine(_attackCoroutine);
 
 		_target = target;
+		_startPos = _originPos;
+		_endPos = _target.transform.position;
+
 		_attackCoroutine = StartCoroutine(AttackCo());
 	}
 
@@ -54,7 +61,16 @@ public class Projectile : AttackBase
 
 	protected virtual void SetPosition(float per)
 	{
-		transform.position = Vector2.Lerp(_originPos, _target.transform.position, per);
+		transform.position = Vector2.Lerp(_startPos, _endPos, per);
+		if (_angleToDirection)
+			AngleToDirection(_endPos - _startPos);
+	}
+
+	protected void AngleToDirection(Vector2 direction)
+	{
+		direction.Normalize();
+		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+		transform.rotation = Quaternion.Euler(0, 0, angle);
 	}
 
 	public override void StopAttack()
@@ -73,9 +89,9 @@ public class Projectile : AttackBase
 			Destroy(gameObject);
 	}
 
-	public override void Blocked()
+	public virtual bool ProjectileCanAttack()
 	{
-		StopAttack();
+		return AttackManager.CanAttack(_attackTime);
 	}
 
 	public override void PoolInit()
