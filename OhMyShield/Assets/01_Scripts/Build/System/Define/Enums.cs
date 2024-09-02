@@ -6,4 +6,11 @@ namespace Enums
         Menu,
         Game,
     }
+
+    public enum PROJECTILE_TYPE
+	{
+        Straight,
+        Parabola,
+        Bezier,
+	}
 }

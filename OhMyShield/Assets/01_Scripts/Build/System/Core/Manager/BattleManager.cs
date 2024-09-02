@@ -91,11 +91,11 @@ public class BattleManager : MonoSingleton<BattleManager>
 
 	private void DespawnAll()
 	{
-		_player.OnDie -= OnPlayerDieHandler;
 		_currentEnemy.OnDie -= OnEnemyDieHandler;
+		_player.OnDie -= OnPlayerDieHandler;
 
-		_player.Despawn();
 		_currentEnemy.Despawn();
+		_player.Despawn();
 	}
 	#endregion
 

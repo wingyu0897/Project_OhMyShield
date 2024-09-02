@@ -1,10 +1,14 @@
+using Enums;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileController : AttackBase
 {
+	[SerializeField] private bool _overrideAttackProperties = false;
+
 	[Header("Projectile")]
+	[SerializeField] private PROJECTILE_TYPE _projectileType;
 	[Tooltip("Height of ParabolaProjectile")]
 	[SerializeField] private float _heightMin;
 	[SerializeField] private float _heightMax;
@@ -23,15 +27,21 @@ public class ProjectileController : AttackBase
 	public override void Attack(Agent target)
 	{
 		// 발사체 생성
-		Projectile projectile = GameManager.Instance.poolManager.Pop(_projectilePrefab.name) as Projectile;
+		Projectile projectile = PoolManager.Instance.Pop(_projectilePrefab.name) as Projectile;
 		if (projectile is null)
 			projectile = Instantiate(_projectilePrefab);
 
 		// 발사체 설정
-		projectile.transform.position = transform.position;
-
 		float angle = _randomAngle ? UnityEngine.Random.Range(0, 360f) : _angle;
-		projectile.SetValue(transform.position, UnityEngine.Random.Range(_heightMin, _heightMax), angle);
+		float height = UnityEngine.Random.Range(_heightMin, _heightMax);
+		projectile.projectileType = _projectileType;
+		projectile.SetProjectileValue(transform.position, height, angle);
+		if (_overrideAttackProperties)
+		{
+			projectile.Damage = Damage;
+			projectile.AttackTime = AttackTime;
+			projectile.CoolTime = CoolTime;
+		}
 
 		// 발사체 공격
 		projectile.Attack(target);

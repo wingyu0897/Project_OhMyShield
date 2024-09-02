@@ -206,5 +206,5 @@ MonoBehaviour:
   _damage: 1
   _attackTime: 1
   _cooltime: 1
+  projectileType: 2
   _angleToDirection: 1
-  _angle: 1

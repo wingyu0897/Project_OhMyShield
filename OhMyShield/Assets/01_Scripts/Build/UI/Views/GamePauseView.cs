@@ -17,7 +17,10 @@ public class GamePauseView : UIView
 			UIViewManager.ShowView<GameView>();
 		});
 
-		Get<Button>("MenuButton").onClick.AddListener(() => GameManager.Instance.ChangeScene(Enums.GAME_STATE.Menu));
+		Get<Button>("MenuButton").onClick.AddListener(() => {
+			Time.timeScale = 1f;
+			GameManager.Instance.ChangeScene(Enums.GAME_STATE.Menu);
+		});
 	}
 
 	private void OnDestroy()

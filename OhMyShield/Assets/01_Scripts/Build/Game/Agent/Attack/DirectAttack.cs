@@ -6,7 +6,7 @@ public class DirectAttack : AttackBase
 
 	public override void Attack(Agent target)
 	{
-		target.ModifyHealth(-_damage);
+		target.ModifyHealth(-Damage);
 	}
 
 	public override void StopAttack()

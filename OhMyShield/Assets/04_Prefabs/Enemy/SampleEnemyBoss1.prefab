@@ -47,9 +47,11 @@ MonoBehaviour:
   _damage: 1
   _attackTime: 1
   _cooltime: 3
-  _height: 5
-  _randomAngle: 1
+  _projectileType: 2
+  _heightMin: 0
+  _heightMax: 0
   _angle: 0
+  _randomAngle: 1
   _projectilePrefab: {fileID: 8609094955797680969, guid: e4809081dcf1c0947a34c7638d67b2f3, type: 3}
 --- !u!1 &3550237517474215448
 GameObject:

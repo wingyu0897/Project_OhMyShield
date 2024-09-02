@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TwiceBezierProjectile : BezierProjectile
+public class TwiceBezierProjectile : Projectile
 {
 	protected Vector2 _blockedPos;
 	protected bool _isSecond = false;
@@ -33,16 +33,16 @@ public class TwiceBezierProjectile : BezierProjectile
 	{
 		float dist = Vector2.Distance(_originPos, _target.transform.position) * 0.8f;
 		_startAngle = _targetAngle - Mathf.PI * 2;
-		_controlPointStart = _blockedPos + new Vector2(Mathf.Cos(_startAngle), Mathf.Sin(_startAngle)) * dist;
+		_controlPoint1 = _blockedPos + new Vector2(Mathf.Cos(_startAngle), Mathf.Sin(_startAngle)) * dist;
 		_targetAngle = _angle * Mathf.Deg2Rad;
-		_controlPointTarget = (Vector2)_target.transform.position + new Vector2(Mathf.Cos(_targetAngle), Mathf.Sin(_targetAngle)) * dist;
+		_controlPoint2 = (Vector2)_target.transform.position + new Vector2(Mathf.Cos(_targetAngle), Mathf.Sin(_targetAngle)) * dist;
 
 		_attackCoroutine = StartCoroutine(AttackCo());
 	}
 
 	public override bool ProjectileCanAttack()
 	{
-		return AttackManager.CanAttack(_attackTime) && AttackManager.CanAttack(_attackTime * 2);
+		return AttackManager.CanAttack(AttackTime) && AttackManager.CanAttack(AttackTime * 2);
 	}
 
 	public override void PoolInit()
