@@ -13,4 +13,13 @@ namespace Enums
         Parabola,
         Bezier,
 	}
+
+    public enum PARTICLE_OPTION
+	{
+        None,
+        AngleForward,
+        AngleBackward,
+        AngleRight,
+        AngleLeft,
+	}
 }

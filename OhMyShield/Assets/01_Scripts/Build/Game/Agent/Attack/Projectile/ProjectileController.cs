@@ -61,7 +61,7 @@ public class ProjectileController : AttackBase
 	{
 		_projectiles.ForEach(proj => 
 		{
-			if (proj)
+			if (proj != null)
 			{
 				proj.OnAttackEnd -= OnProjectileAttackEndHandler;
 				proj?.StopAttack();

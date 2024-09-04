@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b85beb8c53f26c4c8b8795452305f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
-  _attackTime: 0.2
-  _cooltime: 0.6
+  Damage: 1
+  AttackTime: 0.2
+  CoolTime: 0.6
+  _overrideAttackTime: 1
   _animationTime: 1
   _throwingDistance: 8
-  _overrideAttackTime: 1
   _projectilePrefab: {fileID: -2889994217879298187, guid: 4928612a68a9c384e82c1aa7ad8f5088, type: 3}
 --- !u!1 &3550237517474215448
 GameObject:

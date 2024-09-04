@@ -127,6 +127,11 @@ public class Projectile : AttackBase
 
 	public override void PoolInit()
 	{
+		if (_attackCoroutine != null)
+		{
+			print("이것은 공격 중에 팝 된거여");
+		}
+
 		// 풀링된 오브젝트인지 확인
 		_isPool = true;
 	}

@@ -24,6 +24,11 @@ namespace Pooling
 			}
 		}
 
+        public bool ContainValue(PoolMono obj)
+		{
+            return _pool.Contains(obj);
+		}
+
         public void DestroyPool()
 		{
             _parent = null;

@@ -1,6 +1,7 @@
 using Pooling;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class AttackBase : PoolMono
 {
@@ -10,8 +11,9 @@ public abstract class AttackBase : PoolMono
     public float CoolTime;
     protected float _lastAttackTime = float.MinValue;
     
+    [Header("Events")]
+    public UnityEvent<AttackBase> OnBlocked;
     public virtual event Action<AttackBase> OnAttackEnd;
-
 
     public float RemainingCooltime() => Mathf.Clamp(_lastAttackTime + CoolTime - Time.time, 0, CoolTime);
     public virtual bool IsNotCool() => Time.time > _lastAttackTime + CoolTime;
@@ -33,7 +35,11 @@ public abstract class AttackBase : PoolMono
 
     public abstract void Attack(Agent target);
     public abstract void StopAttack();
-    public virtual void Blocked() => StopAttack();
+    public virtual void Blocked()
+	{
+        OnBlocked?.Invoke(this);
+        StopAttack();
+	}
 
     public override void PoolInit() { }
 }

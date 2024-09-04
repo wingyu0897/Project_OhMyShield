@@ -7,6 +7,8 @@ public class TwiceBezierProjectile : Projectile
 
 	public override void Blocked()
 	{
+		OnBlocked?.Invoke(this);
+
 		if (_isSecond)
 		{
 			StopAttack();

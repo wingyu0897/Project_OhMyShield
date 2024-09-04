@@ -44,12 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f97ccbc18ecf4c04cb9e91b08e80a438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
-  _attackTime: 2
-  _cooltime: 1
-  _height: 0
-  _randomAngle: 0
+  Damage: 1
+  AttackTime: 1
+  CoolTime: 1
+  _overrideAttackProperties: 1
+  _projectileType: 0
+  _heightMin: 0
+  _heightMax: 0
   _angle: 0
+  _randomAngle: 0
   _projectilePrefab: {fileID: 8858427452750436751, guid: 5796bb8c27d51754fab3da367ba0ff23, type: 3}
 --- !u!1 &3550237517474215448
 GameObject:

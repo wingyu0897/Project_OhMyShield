@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6452859155072635387}
   - component: {fileID: 3736436772866775634}
   - component: {fileID: -2889994217879298187}
+  - component: {fileID: 6681111611311499320}
+  - component: {fileID: 2646159654822230310}
   - component: {fileID: 6120128569560579537}
   m_Layer: 8
   m_Name: SwordProjectile
@@ -98,10 +100,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4691424aa5dd8fc41abcd71cd7018c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
-  _attackTime: 1
-  _cooltime: 0.5
+  Damage: 1
+  AttackTime: 0
+  CoolTime: 0
+  OnBlocked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6681111611311499320}
+        m_TargetAssemblyTypeName: EffectPlayer, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2646159654822230310}
+        m_TargetAssemblyTypeName: EffectPlayer, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  projectileType: 0
   _angleToDirection: 1
+--- !u!114 &6681111611311499320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431167049004933681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71cb82b4f8c1bf1439270ca5b27fef30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 8138938289257472282, guid: 9affed4203e92b34a999e08f1bd45618, type: 3}
+  particleOption: 2
+--- !u!114 &2646159654822230310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431167049004933681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71cb82b4f8c1bf1439270ca5b27fef30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 5763847123000656097, guid: c93b651bbc4ab9f46ba90c970dcfa913, type: 3}
+  particleOption: 2
 --- !u!61 &6120128569560579537
 BoxCollider2D:
   m_ObjectHideFlags: 0

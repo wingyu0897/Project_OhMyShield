@@ -5,10 +5,10 @@ using DG.Tweening;
 
 public class ThreeDirectionProjectile : AttackBase
 {
+	[SerializeField] private bool _overrideAttackTime = true;
 	[Space]
 	[SerializeField] private float _animationTime = 1f;
     [SerializeField] private float _throwingDistance = 2f;
-	[SerializeField] private bool _overrideAttackTime = true;
 	[SerializeField] private Projectile _projectilePrefab;
 
 	private List<Projectile> _projectileOnAnimation = new();
@@ -28,6 +28,7 @@ public class ThreeDirectionProjectile : AttackBase
 			projectile.AttackTime = AttackTime;
 		projectile.SetProjectileValue(pos);
 
+		projectile.transform.DOKill();
 
 		_projectileOnAnimation.Add(projectile);
 		projectile.transform.DOMove(pos, _animationTime).OnComplete(() => {
